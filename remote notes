@@ -108,4 +108,119 @@ public class cardGameWar {
     
     private Random random = new Random(); 
     
+    private Player player1: 
+    private Player player2: 
+    
+    Deck deck; 
+    
+    public static void main (String[] args) {
+    
+    new cardGameWar().run(); 
+    }
+    
+    private void run() {
+        selectPlayers();
+        createDeck();
+        cardDeal();
+        gamePlay();
+        getWinner();
+        
+            System.out.println(player1.getHand());
+            System.out.println(player2.getHand());
+    }
+    
+    private void getWinner() {
+        if (player1.getScore() > player2.getScore()) {
+            printWinner(player1);
+            printLoser(player2);
+        }
+        
+        else if (player2.getScore() > player1.getScore()) {
+            printWinner(player2);
+            printLoser(player1);
+        }
+        
+        else {
+            printDraw(player1, player2);
+        }
+        
+    private void printDraw(Player player1, Player player2) {
+        System.out.println(" It's a draw between " + player1 + " and " + player2 + "! Demand a rematch.);
+    }
+    private void printWinner(Player winner) {
+       System.out.println(winner + " is the winner with a score of " + winner.getScore()) ". Great job!"; 
+    }
+    private void printLoser(Player loser) {
+        System.out.println(loser + " is the loser with a score of " + loser.getScore() + ". Better luck next time!);
+    }
+    
+    private void gamePlay () {
+    int turns = player1.getHand.size();
+    
+        for (int turn = 0; turn < turns; turn ++) {
+            playersFlipCards();
+        }
+    }
+    private void playersFlipCards() {
+        Card card1 = player1.flip(); 
+        Card card2 = player2.flip();
+            System.out.println(player1 + " is holding " + card1 + " and " + player2 + " is holding " + card2); 
+    
+    if (card1.getRank() > card2.getRank()) {
+			player1.addscore();
+			System.out.println("* " + player1 + " wins");
+		}
+	
+		else if (card2.getRank() > card1.getRank()) {
+			player2.addscore();
+			System.out.println("* " + player2 + " wins");
+		}
+		
+		else {
+			System.out.println("It's a Tie!");
+		}
+	}
+
+	private void cardDeal() {
+		int size = deck.size();
+		for (int index = 0; index < size; index ++ ) {
+			
+			if (index % 2 == 0 ) {
+				player1.draw(deck);
+			} else {
+				
+				player2.draw(deck);
+			}
+		}
+		
+	}
+
+	private void createDeck() {
+		// TODO Auto-generated method stub
+		
+		deck = new Deck ();
+		deck.shuffle();
+		//System.out.println(deck);
+		
+	}
+
+	private void selectPlayers() {
+		// TODO Auto-generated method stub
+		
+		List<String> names = new LinkedList<>(PrincessPlayers);
+		
+		player1 = selectPlayer(names);
+		player2 = selectPlayer(names);
+		
+		System.out.println(player1 + " is playing " + player2);
+		
+	}
+
+	private Player selectPlayer(List<String> names) {
+		// TODO Auto-generated method stub
+		int pos = random.nextInt(names.size());
+		String princess = names.remove(pos);
+		return new Player(princess);
+	}
+}
 } END MAIN CLASS 
