@@ -24,5 +24,30 @@ public class Card {
     public int getRank () {
       return rank; 
     }
-} END CLASS 
+} END CARD CLASS 
 
+
+import java.util.Collections; 
+import java.util.LinkedList; 
+import java.util.List; 
+
+public class Deck extends LinkedList<Card> {
+    private static final int Rank_start = 2;
+    private List<String> cardValue = List.of("Two", "Three", "Four", "Five", "Six" "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace");
+    private List<String> cardSuit = List.of("Clubs", "Spades", "Diamonds", "Hearts");
+    
+ public Deck () {
+    for (int rank = Rank_start; rank < Rank_start + cardValue.size(); rank ++ {
+    String cardName = cardValue.get(rank - Rank_start);
+    }
+ }
+ 
+ private void cardsForDefaultPlayer(int rank, String cardName) {
+    for String cardSuit : Suits {
+        this.add(new Card(cardName, suit, rank));
+    }
+ }
+ public void shuffle() {
+    Collections.shuffle(this);
+ }
+} END DECK CLASS 
