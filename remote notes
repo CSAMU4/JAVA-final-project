@@ -1,29 +1,40 @@
 package warGame; 
-
+/* Create the class Card with fields (value and name), methods, and getters and setters (describes the description of a card)
 
 import java.util.List; 
 
 public class Card {
-    private String name; 
-    private String suit; 
-    private int rank; 
-    
-    
-    
-    public Card (String cardName, String suit, int rank) {
-      this.name = cardName; 
-      this.suit = suit; 
-      this.rank = rank; 
+    	private String value; 
+    	private String name; 
+    public Card (String name, String value) {
+      this.value = value; 
+      this.name = name;
     }
     
+    // getters and setters 
+    
+    public int getValue() {
+    	return value; 
+    }
+    public vpid setValue(int value) {
+    	this.value = value;
+    }
+    public String getName() {
+    	return name;
+    }
+    public void setName(String name){
+    	this.name = name; 
+    }
+  
+ 
+ public void describe() {
+ 	System.out.println(this.name + " " + this.value);
+ }
     @Override 
     public String toString () {
-      return name + " of " + suit; 
+      return value + " of " + name; 
     }
-    
-    public int getRank () {
-      return rank; 
-    }
+ }
 } END CARD CLASS 
 
 
@@ -36,68 +47,93 @@ public class Deck extends LinkedList<Card> {
     private List<String> cardValue = List.of("Two", "Three", "Four", "Five", "Six" "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace");
     private List<String> cardSuit = List.of("Clubs", "Spades", "Diamonds", "Hearts");
     
- public Deck () {
-    for (int rank = Rank_start; rank < Rank_start + cardValue.size(); rank ++ {
-    String cardName = cardValue.get(rank - Rank_start);
-    }
- }
+ /* Create a class called Deck with fields (cards) and methods (shuffle and draw) 
  
- private void cardsForDF(int rank, String cardName) { // DF: default player
-    for String cardSuit : Suits {
-        this.add(new Card(cardName, suit, rank));
-    }
+ public Deck () {
+  List<Card> cards = new ArrayList<Card>(); 
+    Deck() {
+      String[] names = {Clubs, Spades, Hearts, Diamonds};
+      String[] numbers = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+	for( String name : names) {
+	   int i = 2; 
+	     for ( String number : numbers) {
+	     	String tempName = number of " of " + name; 
+	     	int value = i++; 
+		Card card = new Card(tempName, value);
+			this.cards.add(card);
+		}
+	}
  }
- public void shuffle() {
-    Collections.shuffle(this);
+ public List<Card> getCards() {
+ 	return cards; 
+ }
+ public void set.Cards<List<Card> cards) {
+ 	this.cards = cards; 
+ } 
+ public void describe() {
+ 	Collections.shuffle(cards);
+ }
+ public Card draw() {
+ 	Card card = this.cards.remove(0);
+	return card; 
  }
 } END DECK CLASS 
 
-
-
-import java.until.LinkedList;
-
-public class Hand extends LinkedList<Card> {
-
-} END HAND CLASS
-
+/ Create the class Player with fields (hands, score, name) and methods (describe, flip, draw, increment score)
 
 public class Player {
-    private String defaultPlayer; 
-    private Hand hand = new Hand(); 
-    private int score; 
-    
-    public Player(String defaultPlayer) {
-        this.defaultPlayer = default player;
-    }
+	List<Card> hand = new ArrayList<Card>(); 
+	Deck deck = new Deck(); 
+	int score; 
+	String name; 
+	
+  public List<Card> getHand() {
+  	return hand; 
+  }
+  public void setHand(List<Card> hand) {
+  	return this.hand = hand; 
+  }
+  publc int getScore() {
+  	return score; 
+  }
+  public void setScore(int score) {
+  	this.score = score; 
+  }
+  public String getName() {
+  	return name; 
+  }
+  public void setName(String name) {
+  	this.name = name; 
+  }
+  
+  public void describe() {
+  	System.out.println(this.name);
+	System.out.println("      ");
+	for(Card card : this.hand){
+		card.describe();
+	}
+  }
+  public card flip() {
+  	return hand.remove(0);
+  }
+  public void draw(Deck deck) {
+  	getHand.add(deck.cards.remove(0));
+  }
+  public void incrementScore() {
+  	this.score += 1;
+  }
+ }
     
     @Override
     public String toString() {
         return defaultPlayer;
     }
-    public void draw (Deck deck) {
-        getHand().add(deck.remove)());
-    }
-    
-
-
-    public Hand getHand() {
-        return hand;
-    }
-    public Card flip() {
-        return hand.remove();
-    }
-    
-   public void addScore() {
-        score = getScore() + 1;
-   }
    
-   public int getScore() {
-        return score; 
-   }
-    
 } END PLAYER CLASS 
 
 // ENTIRE GAME 
+
+/* Create an automated verision of WAR using the Classes developed.  
 
 import java.util.LinkedList; 
 import java.util.List; 
